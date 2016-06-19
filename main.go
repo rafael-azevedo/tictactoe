@@ -25,16 +25,18 @@ func main() {
 }
 
 func playGame(board [][]string) [][]string {
+	player1 := "X" 
+	//player2 := "O"
 	pos := selectLocation()
 	invalidPosition(pos)
-	player1(pos, board)
+	turn(pos, board, player1)
 	win := winner(board)
 	if win == true {
 		return board
 	}
 	pos = selectLocation()
 	invalidPosition(pos)
-	player2(pos, board)
+	turn(pos, board, player2)
 	win = winner(board)
 	if win == true {
 		return board
@@ -67,67 +69,33 @@ func selectLocation() int {
 	return pos
 }
 
-func player1(pos int, board [][]string) {
+func turn(pos int, board [][]string, player string) {
 	if pos == (1) {
-		board[0][0] = "X"
+		board[0][0] = player
 	}
 	if pos == (2) {
-		board[0][1] = "X"
+		board[0][1] = player
 	}
 	if pos == (3) {
-		board[0][2] = "X"
+		board[0][2] = player
 	}
 	if pos == (4) {
-		board[1][0] = "X"
+		board[1][0] = player
 	}
 	if pos == (5) {
-		board[1][1] = "X"
+		board[1][1] = player
 	}
 	if pos == (6) {
-		board[1][2] = "X"
+		board[1][2] = player
 	}
 	if pos == (7) {
-		board[2][0] = "X"
+		board[2][0] = player
 	}
 	if pos == (8) {
-		board[2][1] = "X"
+		board[2][1] = player
 	}
 	if pos == (9) {
-		board[2][2] = "X"
-	}
-	clear()
-	for i := 0; i < len(board); i++ {
-		fmt.Printf("%s\n", strings.Join(board[i], " "))
-	}
-}
-
-func player2(pos int, board [][]string) {
-	if pos == (1) {
-		board[0][0] = "O"
-	}
-	if pos == (2) {
-		board[0][1] = "O"
-	}
-	if pos == (3) {
-		board[0][2] = "O"
-	}
-	if pos == (4) {
-		board[1][0] = "O"
-	}
-	if pos == (5) {
-		board[1][1] = "O"
-	}
-	if pos == (6) {
-		board[1][2] = "O"
-	}
-	if pos == (7) {
-		board[2][0] = "O"
-	}
-	if pos == (8) {
-		board[2][1] = "O"
-	}
-	if pos == (9) {
-		board[2][2] = "O"
+		board[2][2] = player
 	}
 	clear()
 	for i := 0; i < len(board); i++ {
