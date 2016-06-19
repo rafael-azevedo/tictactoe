@@ -24,6 +24,20 @@ func main() {
 	fmt.Println("Game Over")
 }
 
+func playAgain(board [][]string) {
+	fmt.Println("Press y to play again or n to stop")
+	var again string
+	fmt.Scan(&again)
+	if again == "y" {
+		board = [][]string{
+			[]string{"_", "_", "_"},
+			[]string{"_", "_", "_"},
+			[]string{"_", "_", "_"},
+		}
+		playGame(board)
+	}
+}
+
 func playGame(board [][]string) [][]string {
 	player1 := "X"
 	player2 := "O"
@@ -32,6 +46,7 @@ func playGame(board [][]string) [][]string {
 	turn(pos, board, player1)
 	win := winner(board)
 	if win == true {
+		playAgain(board)
 		return board
 	}
 	pos = selectLocation()
@@ -39,8 +54,10 @@ func playGame(board [][]string) [][]string {
 	turn(pos, board, player2)
 	win = winner(board)
 	if win == true {
+		playAgain(board)
 		return board
 	}
+
 	return playGame(board)
 }
 func invalidPosition(pos int) {
