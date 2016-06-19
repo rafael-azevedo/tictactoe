@@ -25,8 +25,8 @@ func main() {
 }
 
 func playGame(board [][]string) [][]string {
-	player1 := "X" 
-	//player2 := "O"
+	player1 := "X"
+	player2 := "O"
 	pos := selectLocation()
 	invalidPosition(pos)
 	turn(pos, board, player1)
@@ -159,13 +159,13 @@ func winner(board [][]string) bool {
 	case board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X":
 		win = true
 		fmt.Println("Player 1 wins !")
-	case board[0][2] == "X" && board[1][1] == "X" && board[2][7] == "X":
+	case board[0][2] == "X" && board[1][1] == "X" && board[2][1] == "X":
 		win = true
 		fmt.Println("Player 1 wins !")
 	case board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O":
 		win = true
 		fmt.Println("Player 2 wins !")
-	case board[0][2] == "O" && board[1][1] == "O" && board[2][7] == "O":
+	case board[0][2] == "O" && board[1][1] == "O" && board[2][1] == "O":
 		win = true
 		fmt.Println("Player 2 wins !")
 	}
